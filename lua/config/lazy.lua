@@ -15,25 +15,25 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---local plugins = {
---  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
---}
 -- Make sure to setup `mapleader` and `maplocalleader` before
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = "\\"
+
+require("config.vim_settings")
 
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
     -- import your plugins
+    -- Tells lazy.vim to load every plugin under the plugin directory and parse it as if it is
+    -- lazy.nvim plugin specification. 
     { import = "plugins" },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" },
-            },
+  install = { colorscheme = { "catpuccin" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
